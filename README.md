@@ -30,11 +30,11 @@ customize:
 Guarde isso pois vamos precisar .
 Na interface gráfica tem que estar assim as portas usadas pelo MQTT deve ser liberadas no Firewall e Eu liberei no Roteador como UTP TCP Liberei entrada e saída 1883, 1884, 8883, 8884 Para que o MQTT fale com os programas .
 Salva e inicia o MQTT.
-https://github.com/viniciusmbs/DTU-W100/blob/main/1.jpeg
+![Configuração MQTT](https://raw.githubusercontent.com/viniciusmbs/DTU-W100/main/1.jpeg)
 
 
 1  instale o Hoymiles DTU Solar: Home Assistant Add-on são dois um estável e outro não estável
-![Captura de tela 2024-11-17 103049|690x159](upload://pDWt8vioflWwmGomBI6KQQIjcez.jpeg)
+![Configuração MQTT](https://raw.githubusercontent.com/viniciusmbs/DTU-W100/main/2.jpeg)
 
  Instalei os dois .
 
@@ -43,15 +43,15 @@ https://github.com/banny310/hoymiles-dtu-homeassistant-addon
 
 Siga o passso a passo da documentação de como instalar ou use o app Android Fing Após instalar vá em ajustes >
 Entre no seu DTU W100 e pegue o ip que ele esta operando >
-![Captura de tela 2024-11-17ip105526|690x450](upload://6BBCjpNvDvp1NB3Lsvs6ZQG9roN.jpeg)
+![Configuração MQTT](https://raw.githubusercontent.com/viniciusmbs/DTU-W100/main/3.jpeg)
 
 
 Agora defina uma senha pois a padrão e admin - admin 
 Suponha que a senha ficou admin senha 123456
-![Captura de tela 2024-11-1senha7 105836|690x422](upload://fZJPbUv6b3g9u2ybx39yVq2iKij.jpeg)
+![Configuração MQTT](https://raw.githubusercontent.com/viniciusmbs/DTU-W100/main/4.jpeg)
 
 Para saber a porta que e padrão não mude 10081
-![Captura de tela 2024-11-portaaa7 110710|690x450](upload://nVW2nzQvN1DAYKWLezmAG2kY4Ym.jpeg)
+![Configuração MQTT](https://raw.githubusercontent.com/viniciusmbs/DTU-W100/main/5.jpeg)
 
 
 
@@ -84,7 +84,7 @@ Agora vamos ao segundo programa
 Instalei os dois também pois e a mesma coisa com o primeiro um e estável e outro não funciona >
 Instale 
 https://github.com/dmslabsbr/hoymiles/tree/master/stable
-![Captura de tela 2024-11-171111111 111556|690x373](upload://o9gcin3JT38FTDRnYJYB1JtKPB6.jpeg)
+![Configuração MQTT](https://raw.githubusercontent.com/viniciusmbs/DTU-W100/main/6.jpeg)
 
 Vai em ajustes >>>
 3 pontos superior como editar configurações.yml
@@ -121,7 +121,7 @@ Salve e inicia o add- on
 Faça os mesmos passos com o mesmo add-on como o primeiro copie e cole as configura;cões.yaml do primeiro só que nesta documentação 
 https://github.com/dmslabsbr/hoymiles/tree/master/stable
 
-![estedeoi-17 112548|690x373](upload://d33gRLtv98K3dDR2G6btdPzHSam.jpeg)
+![Configuração MQTT](https://raw.githubusercontent.com/viniciusmbs/DTU-W100/main/7.jpeg)
 
 
 Para acessar os dados 
@@ -131,4 +131,59 @@ http://homeassistant.local:8123/config/devices/device/187ea61d0800ff1237c5fdfbaa
 
 La estará os sensores ai e só fazer seu card eu usei este card 
 
-![Captura de tela 2024-11-17 11gggg3337|460x500](upload://wY72QwVi6P
+![Configuração MQTT](https://raw.githubusercontent.com/viniciusmbs/DTU-W100/main/8.jpeg)
+
+Se vc fez tudo correto e só copiar este meu card que vai aparecer isso E tive muita dificuldade para colocar a foto do painel atrás da barra assim como esta Abaixo segue a foto pra colocar no seu /local/PainelHoy3.png
+
+![Configuração MQTT](https://raw.githubusercontent.com/viniciusmbs/DTU-W100/main/8.png)
+
+
+```
+type: custom:bar-card
+title: Produção Solar Hoymilies
+entities:
+  - entity: sensor.hoymiles_gateway_solarh_6739_real_power
+    name: Produção Atual
+    color: "#2196F3"
+    max: 3450
+    show_state: true
+    show_icon: false
+  - entity: sensor.hoymiles_gateway_solarh_6739_today_eq
+    name: Produção Dia
+    color: "#2196F3"
+    max: 24
+    show_state: true
+    show_icon: false
+  - entity: sensor.hoymiles_gateway_solarh_6739_month_eq
+    name: Produção Mês
+    color: "#2196F3"
+    max: 650
+    show_state: true
+    show_icon: false
+direction: up
+height: 200px
+stack: horizontal
+width: 100%
+style: |
+  ha-card {
+    background: none;
+    border: none;
+  }
+card_mod:
+  style: |
+    bar-card-backgroundbar {
+      background-image: url('/local/PainelHoy3.png'); /* Imagem do painel solar */
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      border-radius: 0px; /* Sem bordas arredondadas */
+    }
+    bar-card-currentbar {
+      background: rgba(33, 150, 243, 0.6); /* Cor atual da barra */
+      border-radius: 0px; /* Sem bordas arredondadas */
+      clip-path: polygon(0 100%, 100% 100%, 100% calc(100% - var(--bar-percent)), 0 calc(100% - var(--bar-percent))); /* Ajusta o preenchimento da barra */
+    }
+    bar-card-name, bar-card-value {
+      text-shadow: 1px 1px black;
+    }
+```
