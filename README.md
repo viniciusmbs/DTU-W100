@@ -30,7 +30,7 @@ customize:
 Guarde isso pois vamos precisar .
 Na interface gráfica tem que estar assim as portas usadas pelo MQTT deve ser liberadas no Firewall e Eu liberei no Roteador como UTP TCP Liberei entrada e saída 1883, 1884, 8883, 8884 Para que o MQTT fale com os programas .
 Salva e inicia o MQTT.
-![Captura de tela 2024-11-mqtttt17 104358|365x500](upload://qFn5tvigRRnrVPXHKXuuzo4DRYT.jpeg)
+https://github.com/viniciusmbs/DTU-W100/blob/main/1.jpeg
 
 
 1  instale o Hoymiles DTU Solar: Home Assistant Add-on são dois um estável e outro não estável
